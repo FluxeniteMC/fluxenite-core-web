@@ -1,0 +1,103 @@
+.contact-page {
+  padding: 130px 0 80px;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-info h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 16px;
+}
+
+.contact-sub {
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: var(--transition);
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.contact-link-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--surface2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.contact-link div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-link strong {
+  font-size: 0.9rem;
+}
+
+.contact-link span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.contact-success {
+  text-align: center;
+  padding: 48px 32px;
+}
+
+.contact-success i {
+  font-size: 2.5rem;
+  color: var(--accent3);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.contact-success h3 { margin-bottom: 8px; }
+.contact-success p { color: var(--text-muted); margin-bottom: 24px; }
+
+.auth-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}

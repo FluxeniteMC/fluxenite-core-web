@@ -1,0 +1,84 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import "./Auth.css";
+
+export default function Register() {
+  const { register, googleSignIn } = useAuth();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    if (password !== confirm) return setError("Passwords do not match.");
+    if (password.length < 6) return setError("Password must be at least 6 characters.");
+    setLoading(true);
+    try {
+      await register(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message || "Registration failed. Try again.");
+    }
+    setLoading(false);
+  };
+
+  const handleGoogle = async () => {
+    setError("");
+    try {
+      await googleSignIn();
+      navigate("/");
+    } catch {
+      setError("Google sign-in failed.");
+    }
+  };
+
+  return (
+    <div className="auth-page page-enter">
+      <div className="auth-card card">
+        <div className="auth-logo">
+          <span className="brand-icon"><i className="fa-solid fa-bolt"></i></span>
+          <span className="auth-brand">Fluxenite</span>
+        </div>
+        <h2>Create account</h2>
+        <p className="auth-sub">Join the Fluxenite community.</p>
+
+        {error && <div className="auth-error"><i className="fa-solid fa-circle-exclamation"></i> {error}</div>}
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" className="form-control" placeholder="you@example.com"
+              value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input type="password" className="form-control" placeholder="••••••••"
+              value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+          <div className="form-group">
+            <label>Confirm Password</label>
+            <input type="password" className="form-control" placeholder="••••••••"
+              value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
+          </div>
+          <button type="submit" className="btn btn-primary auth-submit" disabled={loading}>
+            {loading ? <><i className="fa-solid fa-spinner fa-spin"></i> Creating…</> : "Create account"}
+          </button>
+        </form>
+
+        <div className="auth-divider"><span>or</span></div>
+        <button className="btn btn-outline google-btn" onClick={handleGoogle}>
+          <i className="fa-brands fa-google"></i> Continue with Google
+        </button>
+
+        <p className="auth-footer">
+          Already have an account? <Link to="/signin">Sign in</Link>
+        </p>
+      </div>
+    </div>
+  );
+}
