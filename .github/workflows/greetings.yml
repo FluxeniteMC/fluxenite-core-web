@@ -1,0 +1,22 @@
+name: Welcome First Contributors
+
+on:
+  pull_request_target:
+  issues:
+
+jobs:
+  welcome:
+    name: Welcome New Users
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Send First Interaction Message
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "👋 Thanks for opening your first issue! We appreciate your contribution and will review it soon."
+          pr-message: "🚀 Thanks for your first pull request! Great to see your contribution—our team will review it shortly."
