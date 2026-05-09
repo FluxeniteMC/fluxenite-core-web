@@ -1,26 +1,34 @@
 {
-  "name": "fluxenite",
-  "version": "1.0.0",
+  "name": "fluxenite-core-web",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "react-router-dom": "^6.22.0",
-    "firebase": "^10.8.0",
-    "@fortawesome/fontawesome-free": "^6.5.1"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
-  "eslintConfig": {
-    "extends": ["react-app"]
+  "dependencies": {
+    "@react-three/drei": "latest",
+    "@react-three/fiber": "latest",
+    "@react-three/postprocessing": "latest",
+    "framer-motion": "latest",
+    "gsap": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "latest"
   },
-  "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest"
   }
 }
